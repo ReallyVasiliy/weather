@@ -12,8 +12,8 @@ public interface OWMService {
     String API_KEY = "4601c92fd081624f71bba9238f9e3a59";
 
     @GET("pokemon")
-    Single<PokemonListResponse> getForecast(@Query("limit") int limit);
+    Single<PokemonListResponse> getDailyForecast(@Query("limit") int limit);
 
     @GET("pokemon/{name}")
-    Single<Pokemon> getPokemon(@Path("name") String name);
+    Single<Pokemon> getCurrentWeather(@Path("name") String name);
 }

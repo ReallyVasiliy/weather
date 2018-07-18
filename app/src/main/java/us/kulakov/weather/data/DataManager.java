@@ -21,7 +21,7 @@ public class DataManager {
 
     public Single<List<String>> getPokemonList(int limit) {
         return mOWMService
-                .getForecast(limit)
+                .getDailyForecast(limit)
                 .toObservable()
                 .flatMapIterable(namedResources -> namedResources.results)
                 .map(namedResource -> namedResource.name)
@@ -29,6 +29,6 @@ public class DataManager {
     }
 
     public Single<Pokemon> getPokemon(String name) {
-        return mOWMService.getPokemon(name);
+        return mOWMService.getCurrentWeather(name);
     }
 }

@@ -44,7 +44,7 @@ public class DataManagerTest {
         PokemonListResponse pokemonListResponse = new PokemonListResponse();
         pokemonListResponse.results = namedResourceList;
 
-        when(mMockOWMService.getForecast(anyInt()))
+        when(mMockOWMService.getDailyForecast(anyInt()))
                 .thenReturn(Single.just(pokemonListResponse));
 
         dataManager
@@ -58,7 +58,7 @@ public class DataManagerTest {
     public void getPokemonCompletesAndEmitsPokemon() {
         String name = "charmander";
         Pokemon pokemon = TestDataFactory.makePokemon(name);
-        when(mMockOWMService.getPokemon(anyString())).thenReturn(Single.just(pokemon));
+        when(mMockOWMService.getCurrentWeather(anyString())).thenReturn(Single.just(pokemon));
 
         dataManager.getPokemon(name).test().assertComplete().assertValue(pokemon);
     }
