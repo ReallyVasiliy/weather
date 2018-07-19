@@ -14,8 +14,8 @@ import java.util.List;
 
 import us.kulakov.weather.common.TestComponentRule;
 import us.kulakov.weather.common.TestDataFactory;
-import us.kulakov.weather.data.remote.model.response.NamedResource;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
+import us.kulakov.weather.data.remote.entities.response.NamedResource;
+import us.kulakov.weather.data.remote.entities.response.Pokemon;
 import us.kulakov.weather.features.main.MainActivity;
 import us.kulakov.weather.util.ErrorTestUtil;
 import io.reactivex.Single;
@@ -65,7 +65,7 @@ public class MainActivityTest {
 
         onView(withText(pokemonList.get(0))).perform(click());
 
-        onView(withId(R.id.image_pokemon)).check(matches(isDisplayed()));
+        onView(withId(R.id.image_forecast)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -76,10 +76,10 @@ public class MainActivityTest {
     }
 
     public void stubDataManagerGetPokemonList(Single<List<String>> single) {
-        when(componentRule.getMockApiManager().getPokemonList(anyInt())).thenReturn(single);
+        when(componentRule.getMockApiManager().queryMultiDayForecast(anyInt())).thenReturn(single);
     }
 
     public void stubDataManagerGetPokemon(Single<Pokemon> single) {
-        when(componentRule.getMockApiManager().getPokemon(anyString())).thenReturn(single);
+        when(componentRule.getMockApiManager().queryCurrentWeather(anyString())).thenReturn(single);
     }
 }

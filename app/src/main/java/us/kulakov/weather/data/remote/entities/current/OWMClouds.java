@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.current;
+package us.kulakov.weather.data.remote.entities.current;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,8 +7,10 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vasiliy Kulakov on 7/17/18.
  * This file is part of the project "weather".
  * Copyright (c) 2018 Vasiliy Kulakov
+ *
+ * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Clouds {
+public class OWMClouds {
 
     @SerializedName("all")
     @Expose
@@ -18,14 +20,14 @@ public class Clouds {
      * No args constructor for use in serialization
      *
      */
-    public Clouds() {
+    public OWMClouds() {
     }
 
     /**
      *
      * @param all
      */
-    public Clouds(Long all) {
+    public OWMClouds(Long all) {
         super();
         this.all = all;
     }
@@ -38,7 +40,7 @@ public class Clouds {
         this.all = all;
     }
 
-    public Clouds withAll(Long all) {
+    public OWMClouds withAll(Long all) {
         this.all = all;
         return this;
     }

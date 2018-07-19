@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.common;
+package us.kulakov.weather.data.remote.entities.common;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Coord {
+public class OWMCoord {
 
     @SerializedName("lon")
     @Expose
@@ -23,7 +23,7 @@ public class Coord {
      * No args constructor for use in serialization
      *
      */
-    public Coord() {
+    public OWMCoord() {
     }
 
     /**
@@ -31,7 +31,7 @@ public class Coord {
      * @param lon
      * @param lat
      */
-    public Coord(Double lon, Double lat) {
+    public OWMCoord(Double lon, Double lat) {
         super();
         this.lon = lon;
         this.lat = lat;
@@ -45,7 +45,7 @@ public class Coord {
         this.lon = lon;
     }
 
-    public Coord withLon(Double lon) {
+    public OWMCoord withLon(Double lon) {
         this.lon = lon;
         return this;
     }
@@ -58,7 +58,7 @@ public class Coord {
         this.lat = lat;
     }
 
-    public Coord withLat(Double lat) {
+    public OWMCoord withLat(Double lat) {
         this.lat = lat;
         return this;
     }

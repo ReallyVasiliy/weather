@@ -5,6 +5,7 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import pl.charmas.android.reactivelocation2.ReactiveLocationProvider;
 import us.kulakov.weather.injection.ActivityContext;
 
 @Module
@@ -25,5 +26,10 @@ public class ActivityModule {
     @ActivityContext
     Context providesContext() {
         return activity;
+    }
+
+    @Provides
+    ReactiveLocationProvider rxLocationManager(@ActivityContext Context context) {
+        return new ReactiveLocationProvider(context);
     }
 }

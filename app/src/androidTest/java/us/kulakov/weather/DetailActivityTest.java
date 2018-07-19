@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 
 import us.kulakov.weather.common.TestComponentRule;
 import us.kulakov.weather.common.TestDataFactory;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
-import us.kulakov.weather.data.remote.model.response.Statistic;
+import us.kulakov.weather.data.remote.entities.response.Pokemon;
+import us.kulakov.weather.data.remote.entities.response.Statistic;
 import us.kulakov.weather.features.detail.DetailActivity;
 import us.kulakov.weather.util.ErrorTestUtil;
 import io.reactivex.Single;
@@ -60,6 +60,6 @@ public class DetailActivityTest {
     }
 
     public void stubDataManagerGetPokemon(Single<Pokemon> single) {
-        when(component.getMockApiManager().getPokemon(anyString())).thenReturn(single);
+        when(component.getMockApiManager().queryCurrentWeather(anyString())).thenReturn(single);
     }
 }

@@ -1,12 +1,11 @@
 package us.kulakov.weather.features.main;
 
-import java.util.List;
-
+import us.kulakov.weather.data.application.MultiDayForecast;
 import us.kulakov.weather.features.base.MvpView;
 
 public interface MainMvpView extends MvpView {
 
-    void showPokemon(List<String> pokemon);
+    void showForecast(MultiDayForecast pokemon);
 
     void showProgress(boolean show);
 

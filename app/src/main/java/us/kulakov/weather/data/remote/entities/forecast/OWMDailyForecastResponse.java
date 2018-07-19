@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.forecast;
+package us.kulakov.weather.data.remote.entities.forecast;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -12,11 +12,11 @@ import java.util.List;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class DailyForecastResponse {
+public class OWMDailyForecastResponse {
 
     @SerializedName("city")
     @Expose
-    private City city;
+    private OWMCity city;
     @SerializedName("cod")
     @Expose
     private String cod;
@@ -28,13 +28,13 @@ public class DailyForecastResponse {
     private Long cnt;
     @SerializedName("list")
     @Expose
-    private List<DayForecast> list = null;
+    private List<OWMDayForecast> list = null;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public DailyForecastResponse() {
+    public OWMDailyForecastResponse() {
     }
 
     /**
@@ -45,7 +45,7 @@ public class DailyForecastResponse {
      * @param list
      * @param city
      */
-    public DailyForecastResponse(City city, String cod, Double message, Long cnt, List<DayForecast> list) {
+    public OWMDailyForecastResponse(OWMCity city, String cod, Double message, Long cnt, List<OWMDayForecast> list) {
         super();
         this.city = city;
         this.cod = cod;
@@ -54,15 +54,15 @@ public class DailyForecastResponse {
         this.list = list;
     }
 
-    public City getCity() {
+    public OWMCity getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(OWMCity city) {
         this.city = city;
     }
 
-    public DailyForecastResponse withCity(City city) {
+    public OWMDailyForecastResponse withCity(OWMCity city) {
         this.city = city;
         return this;
     }
@@ -75,7 +75,7 @@ public class DailyForecastResponse {
         this.cod = cod;
     }
 
-    public DailyForecastResponse withCod(String cod) {
+    public OWMDailyForecastResponse withCod(String cod) {
         this.cod = cod;
         return this;
     }
@@ -88,7 +88,7 @@ public class DailyForecastResponse {
         this.message = message;
     }
 
-    public DailyForecastResponse withMessage(Double message) {
+    public OWMDailyForecastResponse withMessage(Double message) {
         this.message = message;
         return this;
     }
@@ -101,20 +101,20 @@ public class DailyForecastResponse {
         this.cnt = cnt;
     }
 
-    public DailyForecastResponse withCnt(Long cnt) {
+    public OWMDailyForecastResponse withCnt(Long cnt) {
         this.cnt = cnt;
         return this;
     }
 
-    public List<DayForecast> getList() {
+    public List<OWMDayForecast> getList() {
         return list;
     }
 
-    public void setList(List<DayForecast> list) {
+    public void setList(List<OWMDayForecast> list) {
         this.list = list;
     }
 
-    public DailyForecastResponse withList(List<DayForecast> list) {
+    public OWMDailyForecastResponse withList(List<OWMDayForecast> list) {
         this.list = list;
         return this;
     }

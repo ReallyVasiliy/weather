@@ -12,7 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import us.kulakov.weather.common.TestDataFactory;
-import us.kulakov.weather.data.DataManager;
+import us.kulakov.weather.data.WeatherRepository;
 import us.kulakov.weather.features.main.MainMvpView;
 import us.kulakov.weather.features.main.MainPresenter;
 import us.kulakov.weather.util.RxSchedulersOverrideRule;
@@ -34,7 +34,7 @@ public class MainPresenterTest {
     @Mock
     MainMvpView mockMainMvpView;
     @Mock
-    DataManager mockDataManager;
+    WeatherRepository mockDataManager;
     private MainPresenter mainPresenter;
 
     @Before
@@ -51,23 +51,23 @@ public class MainPresenterTest {
     @Test
     public void getPokemonReturnsPokemonNames() throws Exception {
         List<String> pokemonList = TestDataFactory.makePokemonNamesList(10);
-        when(mockDataManager.getPokemonList(10)).thenReturn(Single.just(pokemonList));
+        when(mockDataManager.queryMultiDayForecast(10)).thenReturn(Single.just(pokemonList));
 
-        mainPresenter.getPokemon(10);
+        mainPresenter.fetchWeatherData(10);
 
         verify(mockMainMvpView, times(2)).showProgress(anyBoolean());
-        verify(mockMainMvpView).showPokemon(pokemonList);
+        verify(mockMainMvpView).showForecast(pokemonList);
         verify(mockMainMvpView, never()).showError(any(Throwable.class));
     }
 
     @Test
     public void getPokemonReturnsError() throws Exception {
-        when(mockDataManager.getPokemonList(10)).thenReturn(Single.error(new RuntimeException()));
+        when(mockDataManager.queryMultiDayForecast(10)).thenReturn(Single.error(new RuntimeException()));
 
-        mainPresenter.getPokemon(10);
+        mainPresenter.fetchWeatherData(10);
 
         verify(mockMainMvpView, times(2)).showProgress(anyBoolean());
         verify(mockMainMvpView).showError(any(Throwable.class));
-        verify(mockMainMvpView, never()).showPokemon(ArgumentMatchers.anyList());
+        verify(mockMainMvpView, never()).showForecast(ArgumentMatchers.anyList());
     }
 }

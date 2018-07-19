@@ -9,8 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import us.kulakov.weather.common.TestDataFactory;
-import us.kulakov.weather.data.DataManager;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
+import us.kulakov.weather.data.WeatherRepository;
+import us.kulakov.weather.data.remote.entities.response.Pokemon;
 import us.kulakov.weather.features.detail.DetailMvpView;
 import us.kulakov.weather.features.detail.DetailPresenter;
 import us.kulakov.weather.util.RxSchedulersOverrideRule;
@@ -33,7 +33,7 @@ public class DetailPresenterTest {
     @Mock
     DetailMvpView mockDetailMvpView;
     @Mock
-    DataManager mockDataManager;
+    WeatherRepository mockDataManager;
     private DetailPresenter detailPresenter;
 
     @Before
@@ -50,23 +50,23 @@ public class DetailPresenterTest {
     @Test
     public void getPokemonDetailReturnsPokemon() throws Exception {
         Pokemon pokemon = TestDataFactory.makePokemon("id");
-        when(mockDataManager.getPokemon(anyString())).thenReturn(Single.just(pokemon));
+        when(mockDataManager.queryCurrentWeather(anyString())).thenReturn(Single.just(pokemon));
 
-        detailPresenter.getPokemon(anyString());
+        detailPresenter.getForecast(anyString());
 
         verify(mockDetailMvpView, times(2)).showProgress(anyBoolean());
-        verify(mockDetailMvpView).showPokemon(pokemon);
+        verify(mockDetailMvpView).showWeather(pokemon);
         verify(mockDetailMvpView, never()).showError(any(Throwable.class));
     }
 
     @Test
     public void getPokemonDetailReturnsError() throws Exception {
-        when(mockDataManager.getPokemon("id")).thenReturn(Single.error(new RuntimeException()));
+        when(mockDataManager.queryCurrentWeather("id")).thenReturn(Single.error(new RuntimeException()));
 
-        detailPresenter.getPokemon("id");
+        detailPresenter.getForecast("id");
 
         verify(mockDetailMvpView, times(2)).showProgress(anyBoolean());
         verify(mockDetailMvpView).showError(any(Throwable.class));
-        verify(mockDetailMvpView, never()).showPokemon(any(Pokemon.class));
+        verify(mockDetailMvpView, never()).showWeather(any(Pokemon.class));
     }
 }

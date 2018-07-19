@@ -10,23 +10,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.bumptech.glide.Glide;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import timber.log.Timber;
 import us.kulakov.weather.R;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
-import us.kulakov.weather.data.remote.model.response.Statistic;
+import us.kulakov.weather.data.application.DayForecast;
 import us.kulakov.weather.features.base.BaseActivity;
 import us.kulakov.weather.features.common.ErrorView;
-import us.kulakov.weather.features.detail.widget.StatisticView;
 import us.kulakov.weather.injection.component.ActivityComponent;
-import timber.log.Timber;
 
 public class DetailActivity extends BaseActivity implements DetailMvpView, ErrorView.ErrorListener {
 
-    public static final String EXTRA_POKEMON_NAME = "EXTRA_POKEMON_NAME";
+    public static final String EXTRA_FORECAST_ID = "EXTRA_FORECAST_ID";
 
     @Inject
     DetailPresenter detailPresenter;
@@ -34,8 +30,8 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     @BindView(R.id.view_error)
     ErrorView errorView;
 
-    @BindView(R.id.image_pokemon)
-    ImageView pokemonImage;
+    @BindView(R.id.image_forecast)
+    ImageView forecastImage;
 
     @BindView(R.id.progress)
     ProgressBar progress;
@@ -43,17 +39,17 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.layout_stats)
+    @BindView(R.id.layout_details)
     LinearLayout statLayout;
 
-    @BindView(R.id.layout_pokemon)
-    View pokemonLayout;
+    @BindView(R.id.layout_forecast)
+    View forecastLayout;
 
-    private String pokemonName;
+    private String forecastId;
 
-    public static Intent getStartIntent(Context context, String pokemonName) {
+    public static Intent getStartIntent(Context context, String forecastId) {
         Intent intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(EXTRA_POKEMON_NAME, pokemonName);
+        intent.putExtra(EXTRA_FORECAST_ID, forecastId);
         return intent;
     }
 
@@ -61,19 +57,19 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        pokemonName = getIntent().getStringExtra(EXTRA_POKEMON_NAME);
-        if (pokemonName == null) {
-            throw new IllegalArgumentException("Detail Activity requires a pokemon name@");
+        forecastId = getIntent().getStringExtra(EXTRA_FORECAST_ID);
+        if (forecastId == null) {
+            throw new IllegalArgumentException("Detail Activity requires a forecast ID");
         }
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle(pokemonName.substring(0, 1).toUpperCase() + pokemonName.substring(1));
+        setTitle(forecastId.substring(0, 1).toUpperCase() + forecastId.substring(1));
 
         errorView.setErrorListener(this);
 
-        detailPresenter.getPokemon(pokemonName);
+        detailPresenter.getForecast(forecastId);
     }
 
     @Override
@@ -97,18 +93,8 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     }
 
     @Override
-    public void showPokemon(Pokemon pokemon) {
-        if (pokemon.sprites != null && pokemon.sprites.frontDefault != null) {
-            Glide.with(this).load(pokemon.sprites.frontDefault).into(pokemonImage);
-        }
-        pokemonLayout.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void showStat(Statistic statistic) {
-        StatisticView statisticView = new StatisticView(this);
-        statisticView.setStat(statistic);
-        statLayout.addView(statisticView);
+    public void showWeather(DayForecast forecast) {
+        forecastLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -119,13 +105,13 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
 
     @Override
     public void showError(Throwable error) {
-        pokemonLayout.setVisibility(View.GONE);
+        forecastLayout.setVisibility(View.GONE);
         errorView.setVisibility(View.VISIBLE);
-        Timber.e(error, "There was a problem retrieving the pokemon...");
+        Timber.e(error, "There was a problem retrieving the forecast...");
     }
 
     @Override
     public void onReloadData() {
-        detailPresenter.getPokemon(pokemonName);
+        detailPresenter.getForecast(forecastId);
     }
 }

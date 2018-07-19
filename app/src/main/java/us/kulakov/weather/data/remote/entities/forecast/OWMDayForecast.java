@@ -1,9 +1,9 @@
-package us.kulakov.weather.data.remote.model.forecast;
+package us.kulakov.weather.data.remote.entities.forecast;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import us.kulakov.weather.data.remote.model.common.Weather;
+import us.kulakov.weather.data.remote.entities.common.OWMWeather;
 
 /**
  * Created by Vasiliy Kulakov on 7/17/18.
@@ -12,23 +12,23 @@ import us.kulakov.weather.data.remote.model.common.Weather;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class DayForecast {
+public class OWMDayForecast {
 
     @SerializedName("dt")
     @Expose
     private Long dt;
     @SerializedName("temp")
     @Expose
-    private Temp temp;
+    private OWMTemp temp;
     @SerializedName("pressure")
     @Expose
     private Double pressure;
     @SerializedName("humidity")
     @Expose
-    private Long humidity;
+    private Double humidity;
     @SerializedName("weather")
     @Expose
-    private java.util.List<Weather> weather = null;
+    private java.util.List<OWMWeather> weather = null;
     @SerializedName("speed")
     @Expose
     private Double speed;
@@ -46,7 +46,7 @@ public class DayForecast {
      * No args constructor for use in serialization
      *
      */
-    public DayForecast() {
+    public OWMDayForecast() {
     }
 
     /**
@@ -61,7 +61,7 @@ public class DayForecast {
      * @param temp
      * @param rain
      */
-    public DayForecast(Long dt, Temp temp, Double pressure, Long humidity, java.util.List<Weather> weather, Double speed, Long deg, Long clouds, Double rain) {
+    public OWMDayForecast(Long dt, OWMTemp temp, Double pressure, Double humidity, java.util.List<OWMWeather> weather, Double speed, Long deg, Long clouds, Double rain) {
         super();
         this.dt = dt;
         this.temp = temp;
@@ -82,20 +82,20 @@ public class DayForecast {
         this.dt = dt;
     }
 
-    public DayForecast withDt(Long dt) {
+    public OWMDayForecast withDt(Long dt) {
         this.dt = dt;
         return this;
     }
 
-    public Temp getTemp() {
+    public OWMTemp getTemp() {
         return temp;
     }
 
-    public void setTemp(Temp temp) {
+    public void setTemp(OWMTemp temp) {
         this.temp = temp;
     }
 
-    public DayForecast withTemp(Temp temp) {
+    public OWMDayForecast withTemp(OWMTemp temp) {
         this.temp = temp;
         return this;
     }
@@ -108,33 +108,33 @@ public class DayForecast {
         this.pressure = pressure;
     }
 
-    public DayForecast withPressure(Double pressure) {
+    public OWMDayForecast withPressure(Double pressure) {
         this.pressure = pressure;
         return this;
     }
 
-    public Long getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Long humidity) {
+    public void setHumidity(Double humidity) {
         this.humidity = humidity;
     }
 
-    public DayForecast withHumidity(Long humidity) {
+    public OWMDayForecast withHumidity(Double humidity) {
         this.humidity = humidity;
         return this;
     }
 
-    public java.util.List<Weather> getWeather() {
+    public java.util.List<OWMWeather> getWeather() {
         return weather;
     }
 
-    public void setWeather(java.util.List<Weather> weather) {
+    public void setWeather(java.util.List<OWMWeather> weather) {
         this.weather = weather;
     }
 
-    public DayForecast withWeather(java.util.List<Weather> weather) {
+    public OWMDayForecast withWeather(java.util.List<OWMWeather> weather) {
         this.weather = weather;
         return this;
     }
@@ -147,7 +147,7 @@ public class DayForecast {
         this.speed = speed;
     }
 
-    public DayForecast withSpeed(Double speed) {
+    public OWMDayForecast withSpeed(Double speed) {
         this.speed = speed;
         return this;
     }
@@ -160,7 +160,7 @@ public class DayForecast {
         this.deg = deg;
     }
 
-    public DayForecast withDeg(Long deg) {
+    public OWMDayForecast withDeg(Long deg) {
         this.deg = deg;
         return this;
     }
@@ -173,7 +173,7 @@ public class DayForecast {
         this.clouds = clouds;
     }
 
-    public DayForecast withClouds(Long clouds) {
+    public OWMDayForecast withClouds(Long clouds) {
         this.clouds = clouds;
         return this;
     }
@@ -186,7 +186,7 @@ public class DayForecast {
         this.rain = rain;
     }
 
-    public DayForecast withRain(Double rain) {
+    public OWMDayForecast withRain(Double rain) {
         this.rain = rain;
         return this;
     }

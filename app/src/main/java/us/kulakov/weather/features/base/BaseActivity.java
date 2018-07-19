@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import java.util.concurrent.atomic.AtomicLong;
 
 import butterknife.ButterKnife;
-import us.kulakov.weather.MvpStarterApplication;
+import us.kulakov.weather.WeatherApplication;
 import us.kulakov.weather.injection.component.ActivityComponent;
 import us.kulakov.weather.injection.component.ConfigPersistentComponent;
 import us.kulakov.weather.injection.component.DaggerConfigPersistentComponent;
@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             Timber.i("Creating new ConfigPersistentComponent id=%d", activityId);
             configPersistentComponent =
                     DaggerConfigPersistentComponent.builder()
-                            .appComponent(MvpStarterApplication.get(this).getComponent())
+                            .appComponent(WeatherApplication.get(this).getComponent())
                             .build();
             componentsArray.put(activityId, configPersistentComponent);
         } else {

@@ -10,10 +10,10 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import us.kulakov.weather.common.TestDataFactory;
-import us.kulakov.weather.data.DataManager;
-import us.kulakov.weather.data.remote.model.response.NamedResource;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
-import us.kulakov.weather.data.remote.model.response.PokemonListResponse;
+import us.kulakov.weather.data.WeatherRepository;
+import us.kulakov.weather.data.remote.entities.response.NamedResource;
+import us.kulakov.weather.data.remote.entities.response.Pokemon;
+import us.kulakov.weather.data.remote.entities.response.PokemonListResponse;
 import us.kulakov.weather.data.remote.OWMService;
 import us.kulakov.weather.util.RxSchedulersOverrideRule;
 import io.reactivex.Single;
@@ -31,11 +31,11 @@ public class DataManagerTest {
     @Mock
     private OWMService mMockOWMService;
 
-    private DataManager dataManager;
+    private WeatherRepository dataManager;
 
     @Before
     public void setUp() {
-        dataManager = new DataManager(mMockOWMService);
+        dataManager = new WeatherRepository(mMockOWMService);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class DataManagerTest {
                 .thenReturn(Single.just(pokemonListResponse));
 
         dataManager
-                .getPokemonList(10)
+                .queryMultiDayForecast(10)
                 .test()
                 .assertComplete()
                 .assertValue(TestDataFactory.makePokemonNameList(namedResourceList));
@@ -60,6 +60,6 @@ public class DataManagerTest {
         Pokemon pokemon = TestDataFactory.makePokemon(name);
         when(mMockOWMService.getCurrentWeather(anyString())).thenReturn(Single.just(pokemon));
 
-        dataManager.getPokemon(name).test().assertComplete().assertValue(pokemon);
+        dataManager.queryCurrentWeather(name).test().assertComplete().assertValue(pokemon);
     }
 }

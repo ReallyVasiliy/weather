@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.common;
+package us.kulakov.weather.data.remote.entities.common;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Weather {
+public class OWMWeather {
 
     @SerializedName("id")
     @Expose
@@ -29,7 +29,7 @@ public class Weather {
      * No args constructor for use in serialization
      *
      */
-    public Weather() {
+    public OWMWeather() {
     }
 
     /**
@@ -39,7 +39,7 @@ public class Weather {
      * @param description
      * @param main
      */
-    public Weather(Long id, String main, String description, String icon) {
+    public OWMWeather(Long id, String main, String description, String icon) {
         super();
         this.id = id;
         this.main = main;
@@ -55,7 +55,7 @@ public class Weather {
         this.id = id;
     }
 
-    public Weather withId(Long id) {
+    public OWMWeather withId(Long id) {
         this.id = id;
         return this;
     }
@@ -68,7 +68,7 @@ public class Weather {
         this.main = main;
     }
 
-    public Weather withMain(String main) {
+    public OWMWeather withMain(String main) {
         this.main = main;
         return this;
     }
@@ -81,7 +81,7 @@ public class Weather {
         this.description = description;
     }
 
-    public Weather withDescription(String description) {
+    public OWMWeather withDescription(String description) {
         this.description = description;
         return this;
     }
@@ -94,7 +94,7 @@ public class Weather {
         this.icon = icon;
     }
 
-    public Weather withIcon(String icon) {
+    public OWMWeather withIcon(String icon) {
         this.icon = icon;
         return this;
     }

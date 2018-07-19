@@ -1,46 +1,47 @@
-package us.kulakov.weather.data.remote.model.current;
+package us.kulakov.weather.data.remote.entities.current;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import us.kulakov.weather.data.remote.model.common.Coord;
-import us.kulakov.weather.data.remote.model.common.Weather;
+import us.kulakov.weather.data.remote.entities.common.OWMCoord;
+import us.kulakov.weather.data.remote.entities.common.OWMWeather;
 
 
 /**
  * Created by Vasiliy Kulakov on 7/17/18.
  * This file is part of the project "weather".
  * Copyright (c) 2018 Vasiliy Kulakov
+ *
+ * OWM API model. Generated with help from jsonschema2pojo.org
  */
-
-public class CurrentWeatherResponse {
+public class OWMCurrentWeatherResponse {
 
     @SerializedName("coord")
     @Expose
-    private Coord coord;
+    private OWMCoord coord;
     @SerializedName("weather")
     @Expose
-    private List<Weather> weather = null;
+    private List<OWMWeather> weather = null;
     @SerializedName("base")
     @Expose
     private String base;
     @SerializedName("main")
     @Expose
-    private Main main;
+    private OWMMain main;
     @SerializedName("wind")
     @Expose
-    private Wind wind;
+    private OWMWind wind;
     @SerializedName("clouds")
     @Expose
-    private Clouds clouds;
+    private OWMClouds clouds;
     @SerializedName("dt")
     @Expose
     private Long dt;
     @SerializedName("sys")
     @Expose
-    private Sys sys;
+    private OWMSys sys;
     @SerializedName("id")
     @Expose
     private Long id;
@@ -55,7 +56,7 @@ public class CurrentWeatherResponse {
      * No args constructor for use in serialization
      *
      */
-    public CurrentWeatherResponse() {
+    public OWMCurrentWeatherResponse() {
     }
 
     /**
@@ -72,7 +73,7 @@ public class CurrentWeatherResponse {
      * @param weather
      * @param main
      */
-    public CurrentWeatherResponse(Coord coord, List<Weather> weather, String base, Main main, Wind wind, Clouds clouds, Long dt, Sys sys, Long id, String name, Long cod) {
+    public OWMCurrentWeatherResponse(OWMCoord coord, List<OWMWeather> weather, String base, OWMMain main, OWMWind wind, OWMClouds clouds, Long dt, OWMSys sys, Long id, String name, Long cod) {
         super();
         this.coord = coord;
         this.weather = weather;
@@ -87,28 +88,28 @@ public class CurrentWeatherResponse {
         this.cod = cod;
     }
 
-    public Coord getCoord() {
+    public OWMCoord getCoord() {
         return coord;
     }
 
-    public void setCoord(Coord coord) {
+    public void setCoord(OWMCoord coord) {
         this.coord = coord;
     }
 
-    public CurrentWeatherResponse withCoord(Coord coord) {
+    public OWMCurrentWeatherResponse withCoord(OWMCoord coord) {
         this.coord = coord;
         return this;
     }
 
-    public List<Weather> getWeather() {
+    public List<OWMWeather> getWeather() {
         return weather;
     }
 
-    public void setWeather(List<Weather> weather) {
+    public void setWeather(List<OWMWeather> weather) {
         this.weather = weather;
     }
 
-    public CurrentWeatherResponse withWeather(List<Weather> weather) {
+    public OWMCurrentWeatherResponse withWeather(List<OWMWeather> weather) {
         this.weather = weather;
         return this;
     }
@@ -121,46 +122,46 @@ public class CurrentWeatherResponse {
         this.base = base;
     }
 
-    public CurrentWeatherResponse withBase(String base) {
+    public OWMCurrentWeatherResponse withBase(String base) {
         this.base = base;
         return this;
     }
 
-    public Main getMain() {
+    public OWMMain getMain() {
         return main;
     }
 
-    public void setMain(Main main) {
+    public void setMain(OWMMain main) {
         this.main = main;
     }
 
-    public CurrentWeatherResponse withMain(Main main) {
+    public OWMCurrentWeatherResponse withMain(OWMMain main) {
         this.main = main;
         return this;
     }
 
-    public Wind getWind() {
+    public OWMWind getWind() {
         return wind;
     }
 
-    public void setWind(Wind wind) {
+    public void setWind(OWMWind wind) {
         this.wind = wind;
     }
 
-    public CurrentWeatherResponse withWind(Wind wind) {
+    public OWMCurrentWeatherResponse withWind(OWMWind wind) {
         this.wind = wind;
         return this;
     }
 
-    public Clouds getClouds() {
+    public OWMClouds getClouds() {
         return clouds;
     }
 
-    public void setClouds(Clouds clouds) {
+    public void setClouds(OWMClouds clouds) {
         this.clouds = clouds;
     }
 
-    public CurrentWeatherResponse withClouds(Clouds clouds) {
+    public OWMCurrentWeatherResponse withClouds(OWMClouds clouds) {
         this.clouds = clouds;
         return this;
     }
@@ -173,20 +174,20 @@ public class CurrentWeatherResponse {
         this.dt = dt;
     }
 
-    public CurrentWeatherResponse withDt(Long dt) {
+    public OWMCurrentWeatherResponse withDt(Long dt) {
         this.dt = dt;
         return this;
     }
 
-    public Sys getSys() {
+    public OWMSys getSys() {
         return sys;
     }
 
-    public void setSys(Sys sys) {
+    public void setSys(OWMSys sys) {
         this.sys = sys;
     }
 
-    public CurrentWeatherResponse withSys(Sys sys) {
+    public OWMCurrentWeatherResponse withSys(OWMSys sys) {
         this.sys = sys;
         return this;
     }
@@ -199,7 +200,7 @@ public class CurrentWeatherResponse {
         this.id = id;
     }
 
-    public CurrentWeatherResponse withId(Long id) {
+    public OWMCurrentWeatherResponse withId(Long id) {
         this.id = id;
         return this;
     }
@@ -212,7 +213,7 @@ public class CurrentWeatherResponse {
         this.name = name;
     }
 
-    public CurrentWeatherResponse withName(String name) {
+    public OWMCurrentWeatherResponse withName(String name) {
         this.name = name;
         return this;
     }
@@ -225,7 +226,7 @@ public class CurrentWeatherResponse {
         this.cod = cod;
     }
 
-    public CurrentWeatherResponse withCod(Long cod) {
+    public OWMCurrentWeatherResponse withCod(Long cod) {
         this.cod = cod;
         return this;
     }

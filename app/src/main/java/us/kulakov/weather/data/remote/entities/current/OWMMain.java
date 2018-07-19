@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.current;
+package us.kulakov.weather.data.remote.entities.current;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,9 +7,10 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vasiliy Kulakov on 7/17/18.
  * This file is part of the project "weather".
  * Copyright (c) 2018 Vasiliy Kulakov
+ *
+ * OWM API model. Generated with help from jsonschema2pojo.org
  */
-
-public class Main {
+public class OWMMain {
 
     @SerializedName("temp")
     @Expose
@@ -19,7 +20,7 @@ public class Main {
     private Double pressure;
     @SerializedName("humidity")
     @Expose
-    private Long humidity;
+    private Double humidity;
     @SerializedName("temp_min")
     @Expose
     private Double tempMin;
@@ -37,7 +38,7 @@ public class Main {
      * No args constructor for use in serialization
      *
      */
-    public Main() {
+    public OWMMain() {
     }
 
     /**
@@ -50,7 +51,7 @@ public class Main {
      * @param temp
      * @param tempMin
      */
-    public Main(Double temp, Double pressure, Long humidity, Double tempMin, Double tempMax, Double seaLevel, Double grndLevel) {
+    public OWMMain(Double temp, Double pressure, Double humidity, Double tempMin, Double tempMax, Double seaLevel, Double grndLevel) {
         super();
         this.temp = temp;
         this.pressure = pressure;
@@ -69,7 +70,7 @@ public class Main {
         this.temp = temp;
     }
 
-    public Main withTemp(Double temp) {
+    public OWMMain withTemp(Double temp) {
         this.temp = temp;
         return this;
     }
@@ -82,20 +83,20 @@ public class Main {
         this.pressure = pressure;
     }
 
-    public Main withPressure(Double pressure) {
+    public OWMMain withPressure(Double pressure) {
         this.pressure = pressure;
         return this;
     }
 
-    public Long getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(Long humidity) {
+    public void setHumidity(Double humidity) {
         this.humidity = humidity;
     }
 
-    public Main withHumidity(Long humidity) {
+    public OWMMain withHumidity(Double humidity) {
         this.humidity = humidity;
         return this;
     }
@@ -108,7 +109,7 @@ public class Main {
         this.tempMin = tempMin;
     }
 
-    public Main withTempMin(Double tempMin) {
+    public OWMMain withTempMin(Double tempMin) {
         this.tempMin = tempMin;
         return this;
     }
@@ -121,7 +122,7 @@ public class Main {
         this.tempMax = tempMax;
     }
 
-    public Main withTempMax(Double tempMax) {
+    public OWMMain withTempMax(Double tempMax) {
         this.tempMax = tempMax;
         return this;
     }
@@ -134,7 +135,7 @@ public class Main {
         this.seaLevel = seaLevel;
     }
 
-    public Main withSeaLevel(Double seaLevel) {
+    public OWMMain withSeaLevel(Double seaLevel) {
         this.seaLevel = seaLevel;
         return this;
     }
@@ -147,7 +148,7 @@ public class Main {
         this.grndLevel = grndLevel;
     }
 
-    public Main withGrndLevel(Double grndLevel) {
+    public OWMMain withGrndLevel(Double grndLevel) {
         this.grndLevel = grndLevel;
         return this;
     }

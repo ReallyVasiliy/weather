@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.concurrent.atomic.AtomicLong;
 
 import butterknife.ButterKnife;
-import us.kulakov.weather.MvpStarterApplication;
+import us.kulakov.weather.WeatherApplication;
 import us.kulakov.weather.injection.component.ConfigPersistentComponent;
 import us.kulakov.weather.injection.component.DaggerConfigPersistentComponent;
 import us.kulakov.weather.injection.component.FragmentComponent;
@@ -46,7 +46,7 @@ public abstract class BaseFragment extends Fragment {
             Timber.i("Creating new ConfigPersistentComponent id=%d", fragmentId);
             configPersistentComponent =
                     DaggerConfigPersistentComponent.builder()
-                            .appComponent(MvpStarterApplication.get(getActivity()).getComponent())
+                            .appComponent(WeatherApplication.get(getActivity()).getComponent())
                             .build();
             componentsArray.put(fragmentId, configPersistentComponent);
         } else {

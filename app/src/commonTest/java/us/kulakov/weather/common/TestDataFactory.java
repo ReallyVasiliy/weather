@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import us.kulakov.weather.data.remote.model.response.NamedResource;
-import us.kulakov.weather.data.remote.model.response.Pokemon;
-import us.kulakov.weather.data.remote.model.response.Sprites;
-import us.kulakov.weather.data.remote.model.response.Statistic;
+import us.kulakov.weather.data.remote.entities.response.NamedResource;
+import us.kulakov.weather.data.remote.entities.response.Pokemon;
+import us.kulakov.weather.data.remote.entities.response.Sprites;
+import us.kulakov.weather.data.remote.entities.response.Statistic;
 
 /**
  * Factory class that makes instances of data models with random field values. The aim of this class

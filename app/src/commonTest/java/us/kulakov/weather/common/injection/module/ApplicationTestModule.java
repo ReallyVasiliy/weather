@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import us.kulakov.weather.data.DataManager;
+import us.kulakov.weather.data.WeatherRepository;
 import us.kulakov.weather.data.remote.OWMService;
 import us.kulakov.weather.injection.ApplicationContext;
 
@@ -42,8 +42,8 @@ public class ApplicationTestModule {
      */
     @Provides
     @Singleton
-    DataManager providesDataManager() {
-        return mock(DataManager.class);
+    WeatherRepository providesDataManager() {
+        return mock(WeatherRepository.class);
     }
 
     @Provides

@@ -1,25 +1,25 @@
 package us.kulakov.weather;
 
-import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDexApplication;
 
 import com.facebook.stetho.Stetho;
 import com.singhajit.sherlock.core.Sherlock;
 import com.squareup.leakcanary.LeakCanary;
 import com.tspoon.traceur.Traceur;
 
+import timber.log.Timber;
 import us.kulakov.weather.injection.component.AppComponent;
 import us.kulakov.weather.injection.component.DaggerAppComponent;
 import us.kulakov.weather.injection.module.AppModule;
 import us.kulakov.weather.injection.module.NetworkModule;
-import timber.log.Timber;
 
-public class MvpStarterApplication extends Application {
+public class WeatherApplication extends MultiDexApplication {
 
     private AppComponent appComponent;
 
-    public static MvpStarterApplication get(Context context) {
-        return (MvpStarterApplication) context.getApplicationContext();
+    public static WeatherApplication get(Context context) {
+        return (WeatherApplication) context.getApplicationContext();
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import us.kulakov.weather.data.DataManager;
+import us.kulakov.weather.data.WeatherRepository;
 import us.kulakov.weather.injection.ApplicationContext;
 import us.kulakov.weather.injection.module.AppModule;
 
@@ -19,5 +19,5 @@ public interface AppComponent {
 
     Application application();
 
-    DataManager apiManager();
+    WeatherRepository apiManager();
 }

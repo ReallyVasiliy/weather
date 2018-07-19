@@ -1,9 +1,9 @@
-package us.kulakov.weather.data.remote.model.forecast;
+package us.kulakov.weather.data.remote.entities.forecast;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import us.kulakov.weather.data.remote.model.common.Coord;
+import us.kulakov.weather.data.remote.entities.common.OWMCoord;
 
 
 /**
@@ -13,7 +13,7 @@ import us.kulakov.weather.data.remote.model.common.Coord;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class City {
+public class OWMCity {
 
     @SerializedName("id")
     @Expose
@@ -23,7 +23,7 @@ public class City {
     private String name;
     @SerializedName("coord")
     @Expose
-    private Coord coord;
+    private OWMCoord coord;
     @SerializedName("country")
     @Expose
     private String country;
@@ -35,7 +35,7 @@ public class City {
      * No args constructor for use in serialization
      *
      */
-    public City() {
+    public OWMCity() {
     }
 
     /**
@@ -46,7 +46,7 @@ public class City {
      * @param population
      * @param country
      */
-    public City(Long id, String name, Coord coord, String country, Long population) {
+    public OWMCity(Long id, String name, OWMCoord coord, String country, Long population) {
         super();
         this.id = id;
         this.name = name;
@@ -63,7 +63,7 @@ public class City {
         this.id = id;
     }
 
-    public City withId(Long id) {
+    public OWMCity withId(Long id) {
         this.id = id;
         return this;
     }
@@ -76,20 +76,20 @@ public class City {
         this.name = name;
     }
 
-    public City withName(String name) {
+    public OWMCity withName(String name) {
         this.name = name;
         return this;
     }
 
-    public Coord getCoord() {
+    public OWMCoord getCoord() {
         return coord;
     }
 
-    public void setCoord(Coord coord) {
+    public void setCoord(OWMCoord coord) {
         this.coord = coord;
     }
 
-    public City withCoord(Coord coord) {
+    public OWMCity withCoord(OWMCoord coord) {
         this.coord = coord;
         return this;
     }
@@ -102,7 +102,7 @@ public class City {
         this.country = country;
     }
 
-    public City withCountry(String country) {
+    public OWMCity withCountry(String country) {
         this.country = country;
         return this;
     }
@@ -115,7 +115,7 @@ public class City {
         this.population = population;
     }
 
-    public City withPopulation(Long population) {
+    public OWMCity withPopulation(Long population) {
         this.population = population;
         return this;
     }

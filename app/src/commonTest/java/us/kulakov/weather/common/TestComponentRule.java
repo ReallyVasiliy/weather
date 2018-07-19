@@ -6,11 +6,11 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-import us.kulakov.weather.MvpStarterApplication;
+import us.kulakov.weather.WeatherApplication;
 import us.kulakov.weather.common.injection.component.DaggerTestComponent;
 import us.kulakov.weather.common.injection.component.TestComponent;
 import us.kulakov.weather.common.injection.module.ApplicationTestModule;
-import us.kulakov.weather.data.DataManager;
+import us.kulakov.weather.data.WeatherRepository;
 
 /**
  * Test rule that creates and sets a Dagger TestComponent into the application overriding the
@@ -25,7 +25,7 @@ public class TestComponentRule implements TestRule {
 
     public TestComponentRule(Context context) {
         this.context = context;
-        MvpStarterApplication application = MvpStarterApplication.get(context);
+        WeatherApplication application = WeatherApplication.get(context);
         testComponent =
                 DaggerTestComponent.builder()
                         .applicationTestModule(new ApplicationTestModule(application))
@@ -40,7 +40,7 @@ public class TestComponentRule implements TestRule {
         return context;
     }
 
-    public DataManager getMockApiManager() {
+    public WeatherRepository getMockApiManager() {
         return testComponent.apiManager();
     }
 
@@ -49,7 +49,7 @@ public class TestComponentRule implements TestRule {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {
-                MvpStarterApplication application = MvpStarterApplication.get(context);
+                WeatherApplication application = WeatherApplication.get(context);
                 application.setComponent(testComponent);
                 base.evaluate();
                 application.setComponent(null);

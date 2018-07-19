@@ -12,7 +12,7 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    OWMService providePokemonApi(Retrofit retrofit) {
+    OWMService provideOWMApi(Retrofit retrofit) {
         return retrofit.create(OWMService.class);
     }
 }

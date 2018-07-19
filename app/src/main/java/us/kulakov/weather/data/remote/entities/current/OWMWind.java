@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.current;
+package us.kulakov.weather.data.remote.entities.current;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,8 +7,10 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vasiliy Kulakov on 7/17/18.
  * This file is part of the project "weather".
  * Copyright (c) 2018 Vasiliy Kulakov
+ *
+ * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Wind {
+public class OWMWind {
 
     @SerializedName("speed")
     @Expose
@@ -21,7 +23,7 @@ public class Wind {
      * No args constructor for use in serialization
      *
      */
-    public Wind() {
+    public OWMWind() {
     }
 
     /**
@@ -29,7 +31,7 @@ public class Wind {
      * @param speed
      * @param deg
      */
-    public Wind(Double speed, Long deg) {
+    public OWMWind(Double speed, Long deg) {
         super();
         this.speed = speed;
         this.deg = deg;
@@ -43,7 +45,7 @@ public class Wind {
         this.speed = speed;
     }
 
-    public Wind withSpeed(Double speed) {
+    public OWMWind withSpeed(Double speed) {
         this.speed = speed;
         return this;
     }
@@ -56,7 +58,7 @@ public class Wind {
         this.deg = deg;
     }
 
-    public Wind withDeg(Long deg) {
+    public OWMWind withDeg(Long deg) {
         this.deg = deg;
         return this;
     }

@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.current;
+package us.kulakov.weather.data.remote.entities.current;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,8 +7,10 @@ import com.google.gson.annotations.SerializedName;
  * Created by Vasiliy Kulakov on 7/17/18.
  * This file is part of the project "weather".
  * Copyright (c) 2018 Vasiliy Kulakov
+ *
+ * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Sys {
+public class OWMSys {
 
     @SerializedName("message")
     @Expose
@@ -27,7 +29,7 @@ public class Sys {
      * No args constructor for use in serialization
      *
      */
-    public Sys() {
+    public OWMSys() {
     }
 
     /**
@@ -37,7 +39,7 @@ public class Sys {
      * @param sunrise
      * @param country
      */
-    public Sys(Double message, String country, Long sunrise, Long sunset) {
+    public OWMSys(Double message, String country, Long sunrise, Long sunset) {
         super();
         this.message = message;
         this.country = country;
@@ -53,7 +55,7 @@ public class Sys {
         this.message = message;
     }
 
-    public Sys withMessage(Double message) {
+    public OWMSys withMessage(Double message) {
         this.message = message;
         return this;
     }
@@ -66,7 +68,7 @@ public class Sys {
         this.country = country;
     }
 
-    public Sys withCountry(String country) {
+    public OWMSys withCountry(String country) {
         this.country = country;
         return this;
     }
@@ -79,7 +81,7 @@ public class Sys {
         this.sunrise = sunrise;
     }
 
-    public Sys withSunrise(Long sunrise) {
+    public OWMSys withSunrise(Long sunrise) {
         this.sunrise = sunrise;
         return this;
     }
@@ -92,7 +94,7 @@ public class Sys {
         this.sunset = sunset;
     }
 
-    public Sys withSunset(Long sunset) {
+    public OWMSys withSunset(Long sunset) {
         this.sunset = sunset;
         return this;
     }

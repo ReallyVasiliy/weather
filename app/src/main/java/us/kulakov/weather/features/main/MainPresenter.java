@@ -2,7 +2,8 @@ package us.kulakov.weather.features.main;
 
 import javax.inject.Inject;
 
-import us.kulakov.weather.data.DataManager;
+import us.kulakov.weather.data.WeatherRepository;
+import us.kulakov.weather.data.application.LatLong;
 import us.kulakov.weather.features.base.BasePresenter;
 import us.kulakov.weather.injection.ConfigPersistent;
 import us.kulakov.weather.util.rx.scheduler.SchedulerUtils;
@@ -12,10 +13,10 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 
     private static final int FORECAST_DAYS_LIMIT = 16;
 
-    private final DataManager dataManager;
+    private final WeatherRepository dataManager;
 
     @Inject
-    public MainPresenter(DataManager dataManager) {
+    public MainPresenter(WeatherRepository dataManager) {
         this.dataManager = dataManager;
     }
 
@@ -24,20 +25,21 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
         super.attachView(mvpView);
     }
 
-    public void getPokemon() {
+    public void fetchWeatherData(LatLong latLong) {
         checkViewAttached();
         getView().showProgress(true);
-        dataManager
-                .getPokemonList(FORECAST_DAYS_LIMIT)
+
+        addDisposable(dataManager
+                .queryMultiDayForecast(latLong, FORECAST_DAYS_LIMIT)
                 .compose(SchedulerUtils.ioToMain())
                 .subscribe(
-                        pokemons -> {
+                        multiDayForecast -> {
                             getView().showProgress(false);
-                            getView().showPokemon(pokemons);
+                            getView().showForecast(multiDayForecast);
                         },
                         throwable -> {
                             getView().showProgress(false);
                             getView().showError(throwable);
-                        });
+                        }));
     }
 }

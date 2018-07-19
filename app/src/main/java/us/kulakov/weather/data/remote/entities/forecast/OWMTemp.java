@@ -1,4 +1,4 @@
-package us.kulakov.weather.data.remote.model.forecast;
+package us.kulakov.weather.data.remote.entities.forecast;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * OWM API model. Generated with help from jsonschema2pojo.org
  */
-public class Temp {
+public class OWMTemp {
 
     @SerializedName("day")
     @Expose
@@ -35,7 +35,7 @@ public class Temp {
      * No args constructor for use in serialization
      *
      */
-    public Temp() {
+    public OWMTemp() {
     }
 
     /**
@@ -47,7 +47,7 @@ public class Temp {
      * @param night
      * @param day
      */
-    public Temp(Double day, Double min, Double max, Double night, Double eve, Double morn) {
+    public OWMTemp(Double day, Double min, Double max, Double night, Double eve, Double morn) {
         super();
         this.day = day;
         this.min = min;
@@ -65,7 +65,7 @@ public class Temp {
         this.day = day;
     }
 
-    public Temp withDay(Double day) {
+    public OWMTemp withDay(Double day) {
         this.day = day;
         return this;
     }
@@ -78,7 +78,7 @@ public class Temp {
         this.min = min;
     }
 
-    public Temp withMin(Double min) {
+    public OWMTemp withMin(Double min) {
         this.min = min;
         return this;
     }
@@ -91,7 +91,7 @@ public class Temp {
         this.max = max;
     }
 
-    public Temp withMax(Double max) {
+    public OWMTemp withMax(Double max) {
         this.max = max;
         return this;
     }
@@ -104,7 +104,7 @@ public class Temp {
         this.night = night;
     }
 
-    public Temp withNight(Double night) {
+    public OWMTemp withNight(Double night) {
         this.night = night;
         return this;
     }
@@ -117,7 +117,7 @@ public class Temp {
         this.eve = eve;
     }
 
-    public Temp withEve(Double eve) {
+    public OWMTemp withEve(Double eve) {
         this.eve = eve;
         return this;
     }
@@ -130,7 +130,7 @@ public class Temp {
         this.morn = morn;
     }
 
-    public Temp withMorn(Double morn) {
+    public OWMTemp withMorn(Double morn) {
         this.morn = morn;
         return this;
     }
