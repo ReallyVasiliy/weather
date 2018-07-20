@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import javax.inject.Inject;
 
@@ -18,6 +21,9 @@ import us.kulakov.weather.R;
 import us.kulakov.weather.data.application.DayForecast;
 import us.kulakov.weather.features.base.BaseActivity;
 import us.kulakov.weather.features.common.ErrorView;
+import us.kulakov.weather.format.DateUtils;
+import us.kulakov.weather.format.PreferredUnitProvider;
+import us.kulakov.weather.format.UnitConversionUtils;
 import us.kulakov.weather.injection.component.ActivityComponent;
 
 public class DetailActivity extends BaseActivity implements DetailMvpView, ErrorView.ErrorListener {
@@ -26,6 +32,12 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
 
     @Inject
     DetailPresenter detailPresenter;
+
+    @Inject
+    DateUtils dateUtils;
+
+    @Inject
+    PreferredUnitProvider unitProvider;
 
     @BindView(R.id.view_error)
     ErrorView errorView;
@@ -39,11 +51,24 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.layout_details)
-    LinearLayout statLayout;
-
     @BindView(R.id.layout_forecast)
     View forecastLayout;
+
+    @BindView(R.id.text_title)
+    TextView forecastTitle;
+
+    @BindView(R.id.text_description)
+    TextView forecastDescription;
+
+    @BindView(R.id.text_high)
+    TextView forecastHigh;
+
+    @BindView(R.id.text_low)
+    TextView forecastLow;
+
+    @BindView(R.id.text_humidity)
+    TextView forecastHumidity;
+
 
     private String forecastId;
 
@@ -65,7 +90,6 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitle(forecastId.substring(0, 1).toUpperCase() + forecastId.substring(1));
 
         errorView.setErrorListener(this);
 
@@ -95,6 +119,39 @@ public class DetailActivity extends BaseActivity implements DetailMvpView, Error
     @Override
     public void showWeather(DayForecast forecast) {
         forecastLayout.setVisibility(View.VISIBLE);
+
+        if (forecast.timestamp != null) {
+            setTitle(dateUtils.formatForecastDisplayDate(forecast.timestamp));
+        }
+
+        // TODO: If we add any more data here, switch to data binding, this is already out of hand
+
+        if (forecast.imageURL != null) {
+            Glide.with(this)
+                    .load(forecast.imageURL)
+                    .placeholder(R.drawable.progress_animation)
+                    .into(forecastImage);
+        }
+
+        if (forecast.title != null) {
+            forecastTitle.setText(forecast.title);
+        }
+
+        if (forecast.description != null) {
+            forecastDescription.setText(forecast.description);
+        }
+
+        if (forecast.tempMax != null) {
+            forecastHigh.setText(unitProvider.getFormattedTempFromK(forecast.tempMax));
+        }
+
+        if (forecast.tempMin != null) {
+            forecastLow.setText(unitProvider.getFormattedTempFromK(forecast.tempMin));
+        }
+
+        if (forecast.humidity != null) {
+            forecastHumidity.setText(getString(R.string.humidity_format, forecast.humidity));
+        }
     }
 
     @Override

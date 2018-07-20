@@ -24,7 +24,7 @@ public class DateUtils {
     }
 
     @NonNull
-    public String formatDisplayWeekday(@NonNull Long timestamp) {
+    public String formatForecastDisplayDate(@NonNull Long timestamp) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(timestamp * 1000L);
         return format.format(cal.getTime());

@@ -102,7 +102,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
             tempLowText.setText(unitProvider.getFormattedTempFromK(forecast.tempMin));
 
             if (forecast.timestamp != null) {
-                textTime.setText(dateUtils.formatDisplayWeekday(forecast.timestamp));
+                textTime.setText(dateUtils.formatForecastDisplayDate(forecast.timestamp));
             } else {
                 Timber.d("Warning: Timestamp for forecast was not set");
             }

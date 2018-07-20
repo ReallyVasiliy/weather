@@ -38,25 +38,29 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textAlignment="center"
-            android:layout_marginTop="@dimen/grid1"/>
+            android:layout_marginTop="@dimen/grid1"
+            android:text="@string/no_value"/>
         <TextView
             android:id="@+id/text_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:text="@string/no_value"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textAlignment="center"
-            android:layout_marginTop="@dimen/grid1"/>
+            android:layout_marginTop="@dimen/grid1"
+            android:text="@string/high_label"/>
         <TextView
             android:id="@+id/text_high"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:text="@string/no_value"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,30 +73,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="24sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:layout_marginTop="@dimen/grid1"
-            android:text="@string/humidity_label"/>
+            android:textSize="24sp"
+            android:text="@string/no_value"/>
         <TextView
             android:id="@+id/text_humidity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="24sp"
-            android:layout_marginBottom="@dimen/grid1"/>
-
-        <LinearLayout
-            android:id="@+id/layout_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/grid1"
+            android:layout_marginBottom="@dimen/grid1"
+            android:text="@string/no_value"/>
 
     </LinearLayout>
 
