@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, ErrorView
                         subscribeLocationUpdates();
                     }
                 } else {
-                    unsubscribeLocationUpdates();
+                    checkLocationPermission();
                 }
             }
 
