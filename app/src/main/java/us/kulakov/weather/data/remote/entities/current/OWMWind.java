@@ -17,7 +17,7 @@ public class OWMWind {
     private Double speed;
     @SerializedName("deg")
     @Expose
-    private Long deg;
+    private Double deg;
 
     /**
      * No args constructor for use in serialization
@@ -31,7 +31,7 @@ public class OWMWind {
      * @param speed
      * @param deg
      */
-    public OWMWind(Double speed, Long deg) {
+    public OWMWind(Double speed, Double deg) {
         super();
         this.speed = speed;
         this.deg = deg;
@@ -50,15 +50,15 @@ public class OWMWind {
         return this;
     }
 
-    public Long getDeg() {
+    public Double getDeg() {
         return deg;
     }
 
-    public void setDeg(Long deg) {
+    public void setDeg(Double deg) {
         this.deg = deg;
     }
 
-    public OWMWind withDeg(Long deg) {
+    public OWMWind withDeg(Double deg) {
         this.deg = deg;
         return this;
     }

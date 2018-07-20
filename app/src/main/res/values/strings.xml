@@ -14,4 +14,11 @@
     <string name="title_location_permission">Your permission needed</string>
     <string name="text_location_permission">To provide you with a weather forecast, this app needs your permission. Please allow this permission to continue using this application.</string>
     <string name="ok">Ok, great</string>
+    <string name="high_label">High:</string>
+    <string name="low_label">Low:</string>
+    <string name="humidity_label">Humidity:</string>
+    <string name="humidity_format">"%.0f percent humidity"</string>
+    <string name="no_value">--</string>
+    <string name="current_location_none">Locating…</string>
+    <string name="current_location_format">Currently in %s</string>
 </resources>

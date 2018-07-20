@@ -14,6 +14,15 @@ android {
         javaMaxHeapSize "8g"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("release.keystore")
+            storePassword "******"
+            keyAlias "******"
+            keyPassword "******"
+        }
+    }
+
     defaultConfig {
         defaultPublishConfig 'debug'
 
@@ -23,19 +32,19 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         versionCode 1000
-        // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds. E.g 1.3.72 == 1,003,072
         versionName '0.1.0'
 
         buildConfigField("String", "OWM_API_URL",
                 "\"${OWMApiUrl}\"")
-        buildConfigField("String", "OWM_API_KEY",
-                "\"${OWMApiKey}\"")
         buildConfigField("String", "OWM_ICON_URL_FORMAT",
                 "\"${OWMIconUrlFormat}\"")
+
+        buildConfigField("String", "OWM_API_KEY", "\"${OWMApiKey}\"")
     }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -117,10 +126,7 @@ dependencies {
 
     implementation "com.jakewharton:butterknife:$versions.butterKnife"
     implementation "com.jakewharton.timber:timber:4.5.1"
-    implementation "com.facebook.stetho:stetho-okhttp3:1.5.0"
-
-    debugImplementation 'com.readystatesoftware.chuck:library:1.0.4'
-    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.0.4'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
     debugImplementation('com.github.ajitsing:sherlock:1.0.2@aar') {
         transitive = true

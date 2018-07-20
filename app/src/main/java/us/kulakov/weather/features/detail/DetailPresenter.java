@@ -24,7 +24,6 @@ public class DetailPresenter extends BasePresenter<DetailMvpView> {
 
     public void getForecast(String forecastId) {
         checkViewAttached();
-        getView().showProgress(true);
         DayForecast forecast = dataManager.queryCachedForecast(forecastId);
         if (forecast != null) {
             getView().showWeather(forecast);

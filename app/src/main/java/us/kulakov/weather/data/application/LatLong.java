@@ -2,6 +2,8 @@ package us.kulakov.weather.data.application;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Locale;
 
 /**
@@ -19,16 +21,23 @@ public class LatLong {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof LatLong)) {
-            return false;
-        }
-
-        float[] distance = new float[1];
-        Location.distanceBetween(latitude, longitude, ((LatLong)o).latitude, ((LatLong)o).longitude, distance);
-        if (distance[0] < 5.0) {
-            return true;
-        }
-        return false;
+    public final int hashCode() {
+        long var2 = Double.doubleToLongBits(this.latitude);
+        int var1 = 31 + (int)(var2 ^ var2 >>> 32);
+        var2 = Double.doubleToLongBits(this.longitude);
+        return var1 * 31 + (int)(var2 ^ var2 >>> 32);
     }
+
+    @Override
+    public final boolean equals(Object var1) {
+        if (this == var1) {
+            return true;
+        } else if (!(var1 instanceof LatLng)) {
+            return false;
+        } else {
+            LatLng var2 = (LatLng)var1;
+            return Double.doubleToLongBits(this.latitude) == Double.doubleToLongBits(var2.latitude) && Double.doubleToLongBits(this.longitude) == Double.doubleToLongBits(var2.longitude);
+        }
+    }
+
 }

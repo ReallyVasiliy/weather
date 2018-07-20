@@ -17,11 +17,18 @@ import javax.inject.Inject;
  */
 public class DateUtils {
 
+    private final SimpleDateFormat format = new SimpleDateFormat("EEEE, MMM d", Locale.getDefault());
+
+    @Inject
+    public DateUtils() {
+    }
+
     @NonNull
-    public static String formatDisplayWeekday(@NonNull Long timestamp) {
+    public String formatDisplayWeekday(@NonNull Long timestamp) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(timestamp * 1000L);
-        String day = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-        return day;
+        return format.format(cal.getTime());
+//        String day = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+//        return day;
     }
 }

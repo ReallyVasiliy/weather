@@ -41,6 +41,8 @@ public class ErrorView extends LinearLayout {
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER);
         LayoutInflater.from(getContext()).inflate(R.layout.view_error, this);
+        setBackgroundColor(0xFFFFFFFF);
+        setFocusableInTouchMode(true);
         ButterKnife.bind(this);
     }
 

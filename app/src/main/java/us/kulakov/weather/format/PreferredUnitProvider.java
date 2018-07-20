@@ -32,7 +32,7 @@ public class PreferredUnitProvider {
     }
 
     @NonNull
-    public String getDefaultUnitFromK(Double kelvinDegrees) {
+    public String getFormattedTempFromK(Double kelvinDegrees) {
         UnitSystem unit = getDefaultUnitSystem();
         String label = tempUnitShort(unit);
         Double value = UnitConversionUtils.kelvinToUnit(kelvinDegrees, unit);

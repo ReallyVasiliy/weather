@@ -18,31 +18,83 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/layout_forecast"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/grid1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ImageView
             android:id="@+id/image_forecast"
+            android:layout_gravity="center"
             android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="16dp" />
+            android:layout_height="90dp" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/grid1"/>
+        <TextView
+            android:id="@+id/text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/grid1"/>
+        <TextView
+            android:id="@+id/text_high"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/grid1"
+            android:text="@string/low_label"/>
+        <TextView
+            android:id="@+id/text_low"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/grid1"
+            android:text="@string/humidity_label"/>
+        <TextView
+            android:id="@+id/text_humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:layout_marginBottom="@dimen/grid1"/>
 
         <LinearLayout
             android:id="@+id/layout_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image_forecast"
             android:orientation="vertical"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <us.kulakov.weather.features.common.ErrorView
         android:id="@+id/view_error"

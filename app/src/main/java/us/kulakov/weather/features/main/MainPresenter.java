@@ -25,7 +25,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
         super.attachView(mvpView);
     }
 
-    public void fetchWeatherData(LatLong latLong) {
+    public void fetchForecast(LatLong latLong) {
         checkViewAttached();
         getView().showProgress(true);
 
@@ -41,5 +41,14 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                             getView().showProgress(false);
                             getView().showError(throwable);
                         }));
+    }
+
+    public void fetchCurrentWeather(LatLong latLong) {
+        checkViewAttached();
+
+        addDisposable(dataManager
+                .queryCurrentWeather(latLong)
+                .compose(SchedulerUtils.ioToMain())
+                .subscribe(getView()::showCurrentWeather, getView()::showError));
     }
 }

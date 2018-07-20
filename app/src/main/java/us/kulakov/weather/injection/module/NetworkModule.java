@@ -2,23 +2,21 @@ package us.kulakov.weather.injection.module;
 
 import android.content.Context;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.readystatesoftware.chuck.ChuckInterceptor;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import us.kulakov.weather.BuildConfig;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
+import us.kulakov.weather.BuildConfig;
 
 @Module
 public class NetworkModule {
@@ -47,13 +45,10 @@ public class NetworkModule {
     @Provides
     @Singleton
     OkHttpClient provideOkHttpClient(
-            HttpLoggingInterceptor httpLoggingInterceptor, StethoInterceptor stethoInterceptor,
-            ChuckInterceptor chuckInterceptor) {
+            HttpLoggingInterceptor httpLoggingInterceptor) {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         if (BuildConfig.DEBUG) {
-            httpClientBuilder.addInterceptor(chuckInterceptor);
             httpClientBuilder.addInterceptor(httpLoggingInterceptor);
-            httpClientBuilder.addNetworkInterceptor(stethoInterceptor);
         }
         return httpClientBuilder.build();
     }
@@ -65,18 +60,6 @@ public class NetworkModule {
                 new HttpLoggingInterceptor(message -> Timber.d(message));
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return loggingInterceptor;
-    }
-
-    @Provides
-    @Singleton
-    StethoInterceptor provideStethoInterceptor() {
-        return new StethoInterceptor();
-    }
-
-    @Provides
-    @Singleton
-    ChuckInterceptor provideChuckInterceptor() {
-        return new ChuckInterceptor(context);
     }
 
     @Provides

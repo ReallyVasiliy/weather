@@ -1,5 +1,7 @@
 package us.kulakov.weather.data.conversion;
 
+import android.os.SystemClock;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +80,9 @@ public class OWMEntityConverter {
         if (response.getList() != null) {
             dayForecastList = new ArrayList<>(response.getList().size());
             for (OWMDayForecast responseForecast : response.getList()) {
+                if (responseForecast.getDt() != null && responseForecast.getDt() * 1000L < System.currentTimeMillis()) {
+                    continue;
+                }
                 dayForecastList.add(convertDayForecast(responseForecast));
             }
         } else {

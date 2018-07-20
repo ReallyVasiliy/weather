@@ -33,16 +33,19 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
     private Subject<String> forecastClickSubject;
     private PreferredUnitProvider unitProvider;
     private Context context;
+    private DateUtils dateUtils;
 
     @Inject
-    ForecastListAdapter(PreferredUnitProvider unitProvider, @ActivityContext Context context) {
+    ForecastListAdapter(PreferredUnitProvider unitProvider, @ActivityContext Context context,
+                        DateUtils dateUtils) {
         this.unitProvider = unitProvider;
         this.context = context;
+        this.dateUtils = dateUtils;
         forecastClickSubject = PublishSubject.create();
         forecasts = Collections.emptyList();
     }
 
-    public void setPokemon(List<DayForecast> forecasts) {
+    public void setForecasts(List<DayForecast> forecasts) {
         this.forecasts = forecasts;
         notifyDataSetChanged();
     }
@@ -51,7 +54,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
     public ForecastViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view =
                 LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.item_pokemon, parent, false);
+                        .inflate(R.layout.item_forecast, parent, false);
         return new ForecastViewHolder(view);
     }
 
@@ -95,11 +98,11 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
         void onBind(DayForecast forecast) {
             this.forecast = forecast;
 
-            tempHighText.setText(unitProvider.getDefaultUnitFromK(forecast.tempMax));
-            tempLowText.setText(unitProvider.getDefaultUnitFromK(forecast.tempMin));
+            tempHighText.setText(unitProvider.getFormattedTempFromK(forecast.tempMax));
+            tempLowText.setText(unitProvider.getFormattedTempFromK(forecast.tempMin));
 
             if (forecast.timestamp != null) {
-                textTime.setText(DateUtils.formatDisplayWeekday(forecast.timestamp));
+                textTime.setText(dateUtils.formatDisplayWeekday(forecast.timestamp));
             } else {
                 Timber.d("Warning: Timestamp for forecast was not set");
             }
