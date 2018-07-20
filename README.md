@@ -1,15 +1,23 @@
-# AndroidMvpStarter [![Build Status](https://travis-ci.org/ravidsrk/android-mvp-starter.svg?branch=master)](https://travis-ci.org/ravidsrk/android-mvp-starter)
+# ReallyWeather
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android%20MVP%20Starter-blue.svg?style=flat)](https://android-arsenal.com/details/3/5232)
-[![Join the chat at https://gitter.im/android-mvp-starter/Lobby](https://badges.gitter.im/android-mvp-starter/Lobby.svg)](https://gitter.im/android-mvp-starter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+An simple, hackathon-style, reactive Android weather app. Consumes the OpenWeatherMap API. 
 
-An MVP Boilerplate to save me having to create the same project over from scratch every time! :)
 <p align="center">
-  <img src="http://g.recordit.co/L5selg7aIv.gif" width="250">
-  <img src="http://g.recordit.co/xt4o5wTySc.gif">
+  <img src="https://user-images.githubusercontent.com/7144594/43004630-5da91ab0-8bfe-11e8-9e91-435ba3f6e7c8.png" width="250">
+  <img src="https://user-images.githubusercontent.com/7144594/43004621-56c57b4e-8bfe-11e8-928c-fc99fa935be2.png" width="250">
 </p>
 
+## Features overview:
+- Map displaying the current location and current weather
+- 16-day forecast, and separate details screen for each day
+- Required permission checks and rationale
+- Unit and UI tests
+
+## Acknowledgements:
+The boilerplate used in this project is [android-starter](https://github.com/androidstarters/android-starter)
+
 ## This project uses:
+- [ReactiveLocation](https://github.com/mcharmas/Android-ReactiveLocation)
 - [RxJava2](https://github.com/ReactiveX/RxJava) and [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 - [Retrofit](http://square.github.io/retrofit/) / [OkHttp](http://square.github.io/okhttp/)
 - [Gson](https://github.com/google/gson)
@@ -18,98 +26,22 @@ An MVP Boilerplate to save me having to create the same project over from scratc
 - [Google Play Services](https://developers.google.com/android/guides/overview)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide 3](https://github.com/bumptech/glide)
-- [Stetho](http://facebook.github.io/stetho/)
 - [Espresso](https://google.github.io/android-testing-support-library/) for UI tests
 - [Robolectric](http://robolectric.org/) for framework specific unit tests
 - [Mockito](http://mockito.org/)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
 
+## Requirements:
+- [OpenWeatherMap API key](https://openweathermap.org/appid)
 
-## Create new project using yeoman [generator-android-mvp-starter](https://github.com/ravidsrk/generator-android-mvp-starter)
-```bash
-npm install -g yo
-npm install -g generator-android-mvp-starter
-mkdir NewApp && cd $_
-yo android-mvp-starter
-```
+## Getting started:
 
-## Building
+Before you build, please first supply your OpenWeatherMap API key (`OWMApiKey`) into `gradle.properties`
 
-To build, install and run a debug version, run this from the root of the project:
-```sh
-./gradlew app:assembleDebug
-```
-    
 ## Testing
 
 To run **unit** tests on your machine:
 
 ```sh
 ./gradlew test
-```
-
-To run **instrumentation** tests on connected devices:
-
-```sh
-./gradlew connectedAndroidTest
-```
-
-## Code Analysis tools
-
-The following code analysis tools are set up on this project:
-
-* [PMD](https://pmd.github.io/)
-
-```sh
-./gradlew pmd
-```
-
-* [Findbugs](http://findbugs.sourceforge.net/)
-
-```sh
-./gradlew findbugs
-```
-
-* [Checkstyle](http://checkstyle.sourceforge.net/)
-
-```sh
-./gradlew checkstyle
-```
-
-## The check task
-
-To ensure that your code is valid and stable use check:
-
-```sh
-./gradlew check
-```
-
-### Created & Maintained By
-[Ravindra Kumar](https://github.com/ravidsrk) ([@ravidsrk](https://www.twitter.com/ravidsrk))
-
-> If you found this repo helpful or you learned something from the source code and want to thank me, consider [buying me a cup of](https://www.paypal.me/ravidsrk) :coffee:
-
-## License
-```
-MIT License
-
-Copyright (c) 2016 Ravindra Kumar
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 ```
